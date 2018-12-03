@@ -80,6 +80,18 @@ public interface IHealthPolicy {
     return Instant.now();
   }
 
+  /**
+   * @return true if action blacklist is enabled, otherwise false
+   */
+  default boolean isActionBlacklistEnabled() {
+    return false;
+  }
+
+  /**
+   * Enable or disable action blacklist.
+   */
+  default void setActionBlacklistEnabled(boolean actionBlacklistEnabled) {
+  }
 
   /**
    * Release all acquired resources and prepare for termination of this instance

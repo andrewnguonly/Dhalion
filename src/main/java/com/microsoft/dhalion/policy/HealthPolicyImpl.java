@@ -36,6 +36,7 @@ public class HealthPolicyImpl implements IHealthPolicy {
   protected Duration interval = Duration.ofMinutes(1);
   private Instant lastExecutionTimestamp;
   private Instant oneTimeDelay = null;
+  private boolean actionBlacklistEnabled;
 
   private ExecutionContext executionContext;
 
@@ -179,6 +180,16 @@ public class HealthPolicyImpl implements IHealthPolicy {
     delay = delay < 0 ? 0 : delay;
 
     return Duration.ofMillis(delay);
+  }
+
+  @Override
+  public boolean isActionBlacklistEnabled() {
+    return actionBlacklistEnabled;
+  }
+
+  @Override
+  public void setActionBlacklistEnabled(boolean actionBlacklistEnabled) {
+    this.actionBlacklistEnabled = actionBlacklistEnabled;
   }
 
   @Override
